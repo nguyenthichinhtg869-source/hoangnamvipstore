@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HoangNam Store - Shop Vật Phẩm PS99, Acc Rank 20 & Perm BloxFruit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        gaming: {
+                            bg: '#06080d',
+                            panel: '#0a0e17',
+                            card: '#0d121d',
+                            cardHover: '#131b2b',
+                            border: '#1c263b',
+                            cyan: '#00d2ff',
+                            indigo: '#6366f1',
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 18px rgba(0, 210, 255, 0.28)',
+                        'neon-indigo': '0 0 22px rgba(99, 102, 241, 0.28)',
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            background-color: #06080d;
+            color: #f1f5f9;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06080d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00d2ff;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-header {
+            background: rgba(6, 8, 13, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gaming-bg text-slate-100 antialiased selection:bg-[#00d2ff]/25 selection:text-cyan-200">
+
+    <!-- ================= 1. COMPACT TOP HEADER ================= -->
+    <header class="sticky top-0 z-40 glass-header border-b border-gaming-border">
+        <div class="max-w-6xl mx-auto px-2 sm:px-5 py-2 flex items-center justify-between gap-1 sm:gap-2.5">
+            <!-- Brand Logo -->
+            <a href="#top" class="flex items-center gap-1 sm:gap-2 shrink-0 group">
+                <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-br from-[#00d2ff] to-[#6366f1] p-[1.5px] shadow-neon-cyan shrink-0">
+                    <div class="w-full h-full bg-gaming-bg rounded-[7px] sm:rounded-[10px] flex items-center justify-center text-[#00d2ff]">
+                        <i class="fa-solid fa-gamepad text-[11px] sm:text-sm"></i>
+                    </div>
+                </div>
+                <div class="leading-none">
+                    <span class="font-display font-bold text-[10.5px] min-[390px]:text-[11.5px] sm:text-base tracking-tighter sm:tracking-tight text-white whitespace-nowrap">
+                        HOANGNAM<span class="text-[#00d2ff]">STORE</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Thanh thao tác bên phải (Hiển thị rõ tên tài khoản trên mobile và desktop) -->
+            <div class="flex items-center gap-1 sm:gap-2 min-w-0">
+                <button type="button" onclick="openHistoryModal('service')" title="Lịch sử dịch vụ & nạp tiền"
+                    class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border hover:border-[#00d2ff]/40 text-slate-200 hover:text-[#00d2ff] flex items-center justify-center shrink-0 transition-colors active:scale-95">
+                    <i class="fa-solid fa-receipt text-[11px] sm:text-sm"></i>
+                </button>
+
+                <button type="button" onclick="openTopupModal('bank')" title="Nạp tiền vào tài khoản"
+                    class="h-7 sm:h-9 pl-1.5 sm:pl-2.5 pr-0.5 sm:pr-1 rounded-lg sm:rounded-xl bg-gaming-card hover:bg-gaming-cardHover border border-[#00d2ff]/40 flex items-center gap-1 sm:gap-1.5 shrink-0 transition-all active:scale-95">
+                    <span id="headerBalance" class="font-display font-extrabold text-[10px] sm:text-xs text-[#00d2ff] whitespace-nowrap">0đ</span>
+                    <span class="w-5 h-5 sm:w-7 sm:h-7 rounded-md sm:rounded-lg bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 font-extrabold flex items-center justify-center text-[10px] sm:text-xs">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                </button>
+
+                <button type="button" onclick="openCartModal()" title="Giỏ hàng"
+                    class="relative w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border hover:border-[#00d2ff]/40 text-slate-200 hover:text-[#00d2ff] flex items-center justify-center shrink-0 transition-colors active:scale-95">
+                    <i class="fa-solid fa-cart-shopping text-[11px] sm:text-sm"></i>
+                    <span id="cartBadge" class="hidden absolute -top-1 -right-1 min-w-[15px] h-3.5 sm:h-4 px-1 rounded-full bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 font-extrabold text-[9px] sm:text-[10px] flex items-center justify-center">0</span>
+                </button>
+
+                <button type="button" id="headerAccountBtn" onclick="openAuthOrProfileModal()"
+                    class="h-7 sm:h-9 px-1.5 sm:px-3 rounded-lg sm:rounded-xl bg-gaming-card hover:bg-gaming-cardHover border border-[#6366f1]/45 text-indigo-200 hover:text-white font-bold text-[10px] sm:text-xs flex items-center gap-1 sm:gap-1.5 transition-all active:scale-95 min-w-0 max-w-[96px] min-[390px]:max-w-[118px] sm:max-w-[175px]">
+                    <span id="headerAccountAvatar" class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-[#00d2ff] to-[#6366f1] text-slate-950 font-display font-extrabold text-[9px] sm:text-[10px] flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-user text-[8px] sm:text-[9px]"></i>
+                    </span>
+                    <span id="headerAccountLabel" class="truncate">Tài khoản</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= 2. MAIN CONTENT ================= -->
+    <main id="top" class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-5 py-3.5 sm:py-5 space-y-5">
+
+        <!-- Banner Chính (Đã bỏ cụm "3 Khu Dịch Vụ Tách Riêng" và mô tả "Chia tách riêng biệt 3 khu vực...") -->
+        <section class="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#0d1424] via-[#0a0f1c] to-[#111936] border border-gaming-border p-4 sm:p-6 shadow-neon-indigo">
+            <div class="absolute -right-12 -top-12 w-44 h-44 rounded-full bg-[#00d2ff]/10 blur-2xl pointer-events-none"></div>
+            <div class="absolute -left-12 -bottom-12 w-44 h-44 rounded-full bg-[#6366f1]/15 blur-2xl pointer-events-none"></div>
+
+            <div class="relative flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="space-y-1.5">
+                    <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00d2ff]/15 border border-[#00d2ff]/35 text-[#00d2ff] text-[11px] font-bold">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        PS99 • ACC RANK 20 • PERM BLOXFRUIT
+                    </div>
+                    <h1 class="font-display font-bold text-lg sm:text-2xl text-white leading-snug">
+                        HoangNam Store — <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#6366f1]">Vật Phẩm PS99, Acc Rank 20 &amp; Perm BloxFruit</span>
+                    </h1>
+                    <p class="text-xs text-slate-300 leading-relaxed max-w-xl">
+                        Cung cấp Vật phẩm PS99, Acc Rank 20 và Perm BloxFruit uy tín. Vui lòng đăng nhập tài khoản để nạp tiền chuyển khoản hoặc thẻ cào và nhận Acc trực tiếp qua Zalo hoặc Facebook Admin.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 shrink-0">
+                    <button type="button" onclick="openTopupModal('bank')"
+                        class="px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] hover:opacity-95 text-slate-950 font-extrabold text-xs flex items-center gap-1.5 shadow-neon-cyan active:scale-95 transition-transform">
+                        <i class="fa-solid fa-wallet"></i> Nạp Tiền Ngay
+                    </button>
+                    <button type="button" onclick="openHistoryModal('cardNotice')"
+                        class="px-3.5 py-2.5 rounded-xl bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border hover:border-[#00d2ff]/40 text-slate-200 font-bold text-xs flex items-center gap-1.5 active:scale-95 transition-transform">
+                        <i class="fa-solid fa-bell text-amber-400"></i> Thông báo nạp card
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thanh lọc danh mục & tìm kiếm -->
+        <section class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar bg-gaming-panel p-1 rounded-2xl border border-gaming-border">
+                <button type="button" id="tab-all" onclick="setCategoryFilter('all')"
+                    class="cat-tab px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all">
+                    Tất cả
+                </button>
+                <button type="button" id="tab-item" onclick="setCategoryFilter('item')"
+                    class="cat-tab px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap text-slate-300 hover:text-white transition-all">
+                    <i class="fa-solid fa-gem text-[#00d2ff] mr-1"></i>PS99
+                </button>
+                <button type="button" id="tab-acc" onclick="setCategoryFilter('acc')"
+                    class="cat-tab px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap text-slate-300 hover:text-white transition-all">
+                    <i class="fa-solid fa-user-ninja text-emerald-400 mr-1"></i>Acc
+                </button>
+                <button type="button" id="tab-perm_bf" onclick="setCategoryFilter('perm_bf')"
+                    class="cat-tab px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap text-slate-300 hover:text-white transition-all">
+                    <i class="fa-solid fa-apple-whole text-amber-400 mr-1"></i>Perm Fruit
+                </button>
+            </div>
+
+            <div class="relative flex-1 sm:max-w-xs">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                <input type="text" id="productSearchInput" oninput="renderProducts()"
+                    placeholder="Tìm PS99, Acc, Perm Fruit..."
+                    class="w-full bg-gaming-card border border-gaming-border focus:border-[#00d2ff] rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none">
+            </div>
+        </section>
+
+        <!-- 3 KHU VỰC DỊCH VỤ TÁCH RIÊNG: PS99, ACC, PERM FRUIT -->
+        <div class="space-y-6">
+            <!-- KHU 1: PS99 -->
+            <section id="section-ps99" aria-label="Dịch vụ PS99" class="rounded-2xl sm:rounded-3xl bg-gaming-panel/75 border border-[#00d2ff]/25 p-3.5 sm:p-5 space-y-3.5">
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-gaming-border">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-xl bg-[#00d2ff]/15 border border-[#00d2ff]/35 text-[#00d2ff] flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-display font-bold text-sm sm:text-base text-white">VẬT PHẨM PS99</h2>
+                            <p class="text-[11px] text-slate-400">Gem, Huge, Titanic Low rap • Cần nhập tên nhân vật Roblox khi thanh toán</p>
+                        </div>
+                    </div>
+                    <span id="count-ps99" class="px-2.5 py-1 rounded-full bg-[#00d2ff]/12 border border-[#00d2ff]/30 text-[#00d2ff] text-[11px] font-bold">0 sản phẩm</span>
+                </div>
+                <div id="productGridPs99" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
+            </section>
+
+            <!-- KHU 2: ACC -->
+            <section id="section-acc" aria-label="Dịch vụ Acc" class="rounded-2xl sm:rounded-3xl bg-gaming-panel/75 border border-emerald-400/25 p-3.5 sm:p-5 space-y-3.5">
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-gaming-border">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/35 text-emerald-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-display font-bold text-sm sm:text-base text-white">ACC RANK 20</h2>
+                            <p class="text-[11px] text-slate-400">Mua Acc không cần nhập tên nhân vật • Nhận Acc qua Zalo / Facebook kèm cú pháp <strong class="text-cyan-300 font-mono">Tên Trên web+Mã Đơn</strong></p>
+                        </div>
+                    </div>
+                    <span id="count-acc" class="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 text-[11px] font-bold">0 sản phẩm</span>
+                </div>
+                <div id="productGridAcc" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
+            </section>
+
+            <!-- KHU 3: PERM FRUIT -->
+            <section id="section-perm_bf" aria-label="Dịch vụ Perm Fruit" class="rounded-2xl sm:rounded-3xl bg-gaming-panel/75 border border-amber-400/25 p-3.5 sm:p-5 space-y-3.5">
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-gaming-border">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/35 text-amber-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-apple-whole"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-display font-bold text-sm sm:text-base text-white">PERM BLOXFRUIT</h2>
+                            <p class="text-[11px] text-slate-400">42 trái vĩnh viễn Blox Fruit • Hiển thị trực tiếp Tên trái &amp; giá tiền</p>
+                        </div>
+                    </div>
+                    <span id="count-perm_bf" class="px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-300 text-[11px] font-bold">0 sản phẩm</span>
+                </div>
+                <div id="productGridPermFruit" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
+            </section>
+        </div>
+
+        <!-- Hỗ trợ & Liên hệ trực tiếp Zalo / Facebook nhận Acc -->
+        <section class="space-y-3 pt-1">
+            <div class="p-3.5 rounded-2xl bg-gaming-panel border border-[#00d2ff]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
+                <div class="flex items-start sm:items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-[#00d2ff]/15 border border-[#00d2ff]/35 text-[#00d2ff] flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white">Hỗ Trợ &amp; Nhận Acc Sau Khi Mua</div>
+                        <p class="text-[11px] text-slate-300 mt-0.5">
+                            Sau khi mua Acc, vui lòng liên hệ <strong class="text-emerald-400">Zalo</strong> hoặc <strong class="text-blue-400">Facebook</strong> bên dưới và gửi đúng cú pháp: <strong class="text-[#00d2ff] font-mono">Tên Trên web+Mã Đơn</strong>
+                        </p>
+                    </div>
+                </div>
+                <button type="button" onclick="openHistoryModal('service')"
+                    class="px-3 py-1.5 rounded-xl bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border hover:border-[#00d2ff]/40 text-[#00d2ff] font-bold text-[11px] shrink-0 self-start sm:self-auto">
+                    Lấy Mã Đơn →
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <a href="https://www.facebook.com/share/14V2uU6V8qU/" target="_blank" rel="noopener noreferrer"
+                    onclick="openExternalLink(event, 'https://www.facebook.com/share/14V2uU6V8qU/')"
+                    class="flex items-center justify-between gap-2.5 p-3 rounded-xl bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border hover:border-[#00d2ff]/40 transition-all">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/15 text-blue-400 flex items-center justify-center shrink-0">
+                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[11px] text-slate-400 leading-none">Facebook Admin (Nhận Acc)</div>
+                            <div class="text-xs font-bold text-white truncate mt-1">Hoàng Nam</div>
+                        </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-300 border border-blue-500/30 text-[11px] font-bold shrink-0">
+                        Nhắn FB <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i>
+                    </span>
+                </a>
+
+                <div class="flex items-center justify-between gap-2 p-3 rounded-xl bg-gaming-card border border-gaming-border">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-comment-dots text-sm"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[11px] text-slate-400 leading-none">Zalo / SĐT (Nhận Acc)</div>
+                            <div class="text-xs font-bold text-emerald-400 truncate mt-1">0783167978</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <a href="https://zalo.me/0783167978" target="_blank" rel="noopener noreferrer"
+                            onclick="openExternalLink(event, 'https://zalo.me/0783167978')"
+                            class="px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 text-[11px] font-bold transition-colors">
+                            Mở Zalo
+                        </a>
+                        <button type="button" onclick="copyText('0783167978', 'SĐT / Zalo 0783167978')"
+                            class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-semibold text-slate-200 transition-colors">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= 3. FOOTER ================= -->
+    <footer class="border-t border-gaming-border bg-gaming-panel py-4 px-3 text-center text-xs text-slate-400 space-y-2.5">
+        <div class="flex flex-wrap items-center justify-center gap-2">
+            <span class="text-slate-300 font-semibold">Liên hệ nhận Acc sau khi mua:</span>
+            <a href="https://zalo.me/0783167978" target="_blank" rel="noopener noreferrer"
+                onclick="openExternalLink(event, 'https://zalo.me/0783167978')"
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 font-bold text-[11px] transition-colors">
+                <i class="fa-solid fa-comment-dots"></i> Zalo: 0783167978
+            </a>
+            <a href="https://www.facebook.com/share/14V2uU6V8qU/" target="_blank" rel="noopener noreferrer"
+                onclick="openExternalLink(event, 'https://www.facebook.com/share/14V2uU6V8qU/')"
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/15 hover:bg-blue-500/25 border border-blue-500/40 text-blue-300 font-bold text-[11px] transition-colors">
+                <i class="fa-brands fa-facebook-f"></i> Facebook: Hoàng Nam
+            </a>
+        </div>
+        <p class="text-slate-500">© 2026 <strong class="text-slate-300">HoangNam Store</strong>. All rights reserved.</p>
+    </footer>
+
+    <!-- ================= 4. MODALS ================= -->
+
+    <!-- A. MODAL TÀI KHOẢN (ĐĂNG NHẬP / ĐĂNG KÝ BẮT BUỘC EMAIL & CHẶN DẤU CÂU) -->
+    <div id="authModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="w-full max-w-md bg-gaming-card border-t sm:border border-gaming-border rounded-t-3xl sm:rounded-3xl max-h-[92vh] flex flex-col overflow-hidden shadow-neon-cyan">
+            <div class="px-4 py-3.5 border-b border-gaming-border flex items-center justify-between bg-gaming-panel shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield text-[#00d2ff]"></i>
+                    <h3 id="authModalTitle" class="font-display font-bold text-sm sm:text-base text-white">TÀI KHOẢN HOANGNAM STORE</h3>
+                </div>
+                <button type="button" onclick="closeModal('authModal')" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-4 overflow-y-auto space-y-4 text-xs">
+                <div id="profilePanel" class="hidden space-y-3.5">
+                    <div class="p-3.5 rounded-2xl bg-gaming-bg border border-[#00d2ff]/40 flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div id="profileAvatarCircle" class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00d2ff] to-[#6366f1] text-slate-950 font-display font-extrabold text-lg flex items-center justify-center shrink-0">
+                                U
+                            </div>
+                            <div class="min-w-0">
+                                <div class="font-display font-bold text-sm text-white truncate" id="profileUsernameText">---</div>
+                                <div class="text-[11px] text-slate-400 truncate mt-0.5"><i class="fa-solid fa-envelope text-[#00d2ff] mr-1"></i><span id="profileEmailText">---</span></div>
+                                <div class="text-[10px] text-emerald-400 font-semibold mt-0.5"><i class="fa-solid fa-lock mr-1"></i>Dữ liệu cá nhân tách biệt hoàn toàn</div>
+                            </div>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="text-[10px] text-slate-400">Số dư hiện tại</div>
+                            <div id="profileBalanceText" class="font-display font-extrabold text-base text-[#00d2ff]">0đ</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" onclick="closeModal('authModal'); openTopupModal('bank');"
+                            class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 font-extrabold text-xs flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Nạp tiền vào acc
+                        </button>
+                        <button type="button" onclick="closeModal('authModal'); openHistoryModal('service');"
+                            class="py-2.5 px-3 rounded-xl bg-gaming-bg hover:bg-gaming-cardHover border border-gaming-border text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-receipt text-[#00d2ff]"></i> Lịch sử của tôi
+                        </button>
+                    </div>
+
+                    <button type="button" onclick="handleLogoutUser()"
+                        class="w-full py-2.5 px-3 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/40 text-rose-300 font-bold text-xs flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất tài khoản
+                    </button>
+                </div>
+
+                <div id="guestAuthPanel" class="space-y-3.5">
+                    <div class="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-gaming-panel border border-gaming-border">
+                        <button type="button" id="authTabLoginBtn" onclick="switchAuthSubTab('login')"
+                            class="py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all">
+                            Đăng nhập
+                        </button>
+                        <button type="button" id="authTabRegisterBtn" onclick="switchAuthSubTab('register')"
+                            class="py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all">
+                            Đăng ký mới
+                        </button>
+                    </div>
+
+                    <form id="loginForm" onsubmit="handleUserLogin(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Tài khoản (chữ không dấu)</label>
+                            <input type="text" id="loginUsernameInput" required autocomplete="username"
+                                oninput="sanitizeStrictAlphanumericInput(this)"
+                                placeholder="Nhập tài khoản (chữ không dấu, không dấu câu)..."
+                                class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Mật khẩu (chữ không dấu)</label>
+                            <div class="relative">
+                                <input type="password" id="loginPasswordInput" required autocomplete="current-password"
+                                    oninput="sanitizeStrictAlphanumericInput(this)"
+                                    placeholder="Nhập mật khẩu (chữ không dấu, không dấu câu)..."
+                                    class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+                                <button type="button" onclick="togglePasswordVisibility('loginPasswordInput', this)"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#00d2ff]">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-3 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] hover:opacity-95 text-slate-950 font-extrabold text-xs shadow-neon-cyan active:scale-95 transition-transform">
+                            Đăng nhập ngay
+                        </button>
+                    </form>
+
+                    <form id="registerForm" onsubmit="handleUserRegister(event)" class="hidden space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Email <span class="text-rose-400">*</span></label>
+                            <input type="email" id="regEmailInput" required autocomplete="email"
+                                placeholder="Nhập địa chỉ Email của bạn (bắt buộc)..."
+                                class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Tài khoản (chữ không dấu) <span class="text-rose-400">*</span></label>
+                            <input type="text" id="regUsernameInput" required minlength="4" maxlength="24" autocomplete="username"
+                                oninput="sanitizeStrictAlphanumericInput(this)"
+                                placeholder="Ví dụ: hoangnam (chữ không dấu, không dấu câu)"
+                                class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Mật khẩu (chữ không dấu) <span class="text-rose-400">*</span></label>
+                            <div class="relative">
+                                <input type="password" id="regPasswordInput" required minlength="4" maxlength="32" autocomplete="new-password"
+                                    oninput="sanitizeStrictAlphanumericInput(this)"
+                                    placeholder="Nhập mật khẩu (chữ không dấu, không dấu câu)..."
+                                    class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl pl-3.5 pr-10 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+                                <button type="button" onclick="togglePasswordVisibility('regPasswordInput', this)"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#00d2ff]">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <p class="text-[11px] text-slate-400 leading-relaxed">
+                            <i class="fa-solid fa-shield-halved text-[#00d2ff] mr-1"></i>Mỗi tài khoản khởi tạo từ <strong class="text-white">0đ</strong> và được tách biệt dữ liệu riêng hoàn toàn.
+                        </p>
+
+                        <button type="submit"
+                            class="w-full py-3 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] hover:opacity-95 text-slate-950 font-extrabold text-xs shadow-neon-cyan active:scale-95 transition-transform">
+                            Tạo tài khoản mới
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- B. MODAL NẠP TIỀN (BẮT BUỘC CÓ TÀI KHOẢN, CHUYỂN KHOẢN QR MIN 10K & THẺ CÀO MAX 500K) -->
+    <div id="topupModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="w-full max-w-lg bg-gaming-card border-t sm:border border-gaming-border rounded-t-3xl sm:rounded-3xl max-h-[92vh] flex flex-col overflow-hidden shadow-neon-cyan">
+            <div class="px-4 py-3.5 border-b border-gaming-border flex items-center justify-between bg-gaming-panel shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-wallet text-[#00d2ff]"></i>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-white">NẠP TIỀN VÀO TÀI KHOẢN</h3>
+                </div>
+                <button type="button" onclick="closeModal('topupModal')" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-4 overflow-y-auto space-y-4 text-xs">
+                <!-- Hiển thị trạng thái tài khoản bắt buộc khi nạp tiền -->
+                <div id="topupAccountNoticeBox" class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/35 text-emerald-200 flex items-center justify-between gap-2 text-[11px]">
+                    <span><i class="fa-solid fa-user-check text-emerald-400 mr-1.5"></i>Tài khoản nhận tiền: <strong id="topupActiveAccountLabel" class="text-white font-mono">---</strong></span>
+                    <button type="button" id="topupLoginPromptBtn" onclick="closeModal('topupModal'); openAuthOrProfileModal();"
+                        class="hidden px-2.5 py-1 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold shrink-0">
+                        Đăng nhập / Đăng ký
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-gaming-panel border border-gaming-border">
+                    <button type="button" id="topupTabBankBtn" onclick="switchTopupTab('bank')"
+                        class="py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all">
+                        <i class="fa-solid fa-qrcode mr-1"></i>Chuyển khoản QR
+                    </button>
+                    <button type="button" id="topupTabCardBtn" onclick="switchTopupTab('card')"
+                        class="py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all">
+                        <i class="fa-solid fa-credit-card mr-1"></i>Nạp thẻ cào
+                    </button>
+                </div>
+
+                <!-- 1. Chuyển khoản QR -->
+                <div id="topupBankPanel" class="space-y-3.5">
+                    <div class="p-3.5 rounded-2xl bg-gaming-bg border border-gaming-border space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Nhập số tiền cần nạp (Tối thiểu 10.000đ)</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="bankAmountInput" min="10000" step="1000"
+                                    oninput="resetBankQrPreviewIfEdited()"
+                                    placeholder="Nhập số tiền từ 10.000đ trở lên..."
+                                    class="flex-1 bg-gaming-card border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3.5 py-2.5 text-xs text-white font-mono placeholder-slate-500 focus:outline-none">
+                                <button type="button" onclick="generateBankTransferQr()"
+                                    class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] hover:opacity-95 text-slate-950 font-extrabold text-xs shrink-0 active:scale-95 transition-transform">
+                                    Tạo mã QR
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5">
+                            <button type="button" onclick="selectQuickBankAmount(10000)" class="px-2.5 py-1 rounded-lg bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border text-[11px] font-bold text-slate-300">10.000đ</button>
+                            <button type="button" onclick="selectQuickBankAmount(20000)" class="px-2.5 py-1 rounded-lg bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border text-[11px] font-bold text-slate-300">20.000đ</button>
+                            <button type="button" onclick="selectQuickBankAmount(50000)" class="px-2.5 py-1 rounded-lg bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border text-[11px] font-bold text-slate-300">50.000đ</button>
+                            <button type="button" onclick="selectQuickBankAmount(100000)" class="px-2.5 py-1 rounded-lg bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border text-[11px] font-bold text-slate-300">100.000đ</button>
+                            <button type="button" onclick="selectQuickBankAmount(200000)" class="px-2.5 py-1 rounded-lg bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border text-[11px] font-bold text-slate-300">200.000đ</button>
+                        </div>
+                    </div>
+
+                    <div id="bankQrPlaceholder" class="p-4 rounded-2xl bg-gaming-bg/60 border border-dashed border-gaming-border text-center text-slate-400 space-y-1">
+                        <i class="fa-solid fa-qrcode text-xl text-[#00d2ff]/70"></i>
+                        <p class="font-semibold text-slate-300">Vui lòng nhập số tiền cần nạp (tối thiểu 10.000đ) và bấm <strong class="text-[#00d2ff]">Tạo mã QR</strong></p>
+                        <p class="text-[11px]">Mã QR, Chủ STK, STK và nội dung chuyển khoản sẽ hiển thị ngay sau khi bạn nhập số tiền hợp lệ.</p>
+                    </div>
+
+                    <div id="bankQrDetailsBox" class="hidden p-4 rounded-2xl bg-gaming-bg border border-[#00d2ff]/45 space-y-3.5">
+                        <div class="flex flex-col items-center text-center space-y-2">
+                            <div class="p-2.5 rounded-2xl bg-white shadow-lg">
+                                <img id="bankQrImage" src="" alt="VietQR Ngân Hàng Bản Việt"
+                                    onerror="this.src='https://placehold.co/220x220/0d121d/00d2ff?text=VietQR+VCCB'"
+                                    class="w-44 h-44 sm:w-48 sm:h-48 object-contain rounded-xl">
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full bg-[#00d2ff]/15 border border-[#00d2ff]/35 text-[#00d2ff] text-[11px] font-bold">
+                                Ngân Hàng Bản Việt (VCCB)
+                            </span>
+                        </div>
+
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2.5 rounded-xl bg-gaming-card border border-gaming-border flex items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <div class="text-[10px] text-slate-400">Chủ STK</div>
+                                    <div class="font-bold text-white truncate">ZALOPAY_NGUYEN LU HOANG NAM</div>
+                                </div>
+                                <button type="button" onclick="copyText('ZALOPAY_NGUYEN LU HOANG NAM', 'Chủ STK')"
+                                    class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-bold text-slate-200 shrink-0">
+                                    Copy
+                                </button>
+                            </div>
+
+                            <div class="p-2.5 rounded-xl bg-gaming-card border border-gaming-border flex items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <div class="text-[10px] text-slate-400">Số Tài Khoản (STK)</div>
+                                    <div class="font-mono font-extrabold text-[#00d2ff] truncate">99ZP26207M55097337</div>
+                                </div>
+                                <button type="button" onclick="copyText('99ZP26207M55097337', 'STK')"
+                                    class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-bold text-slate-200 shrink-0">
+                                    Copy
+                                </button>
+                            </div>
+
+                            <div class="p-2.5 rounded-xl bg-gaming-card border border-amber-500/40 flex items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <div class="text-[10px] text-amber-300 font-semibold">Nội dung chuyển khoản (Bắt buộc)</div>
+                                    <div id="bankTransferNoteText" class="font-mono font-extrabold text-amber-300 truncate">HoangNamStore+10000</div>
+                                </div>
+                                <button type="button" onclick="copyText(document.getElementById('bankTransferNoteText').textContent, 'Nội dung chuyển khoản')"
+                                    class="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-[11px] font-bold text-amber-200 shrink-0">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="submitBankTransferRequest()"
+                            class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-transform">
+                            <i class="fa-solid fa-paper-plane"></i> Tôi đã chuyển khoản • Gửi duyệt
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Nạp thẻ cào -->
+                <form id="topupCardPanel" onsubmit="handleCardTopup(event)" class="hidden space-y-3">
+                    <div class="p-3 rounded-xl bg-rose-950/70 border border-rose-500/50 text-rose-200 flex items-start gap-2 leading-relaxed">
+                        <i class="fa-solid fa-triangle-exclamation text-rose-400 mt-0.5 shrink-0"></i>
+                        <span class="font-bold">Chọn sau mệnh giá hoặc sai loại thẻ sẽ mất,Không được hoàn</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Loại thẻ cào</label>
+                            <select id="cardTypeSelect" required
+                                class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3 py-2.5 text-xs text-white font-semibold focus:outline-none">
+                                <option value="Viettel">Viettel</option>
+                                <option value="Mobifone">Mobifone</option>
+                                <option value="Vinaphone">Vinaphone</option>
+                                <option value="Vietnamobile">Vietnamobile</option>
+                                <option value="Zing">Zing</option>
+                                <option value="Garena">Garena</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1">Mệnh giá (Tối đa 500.000đ)</label>
+                            <select id="cardAmountSelect" required
+                                class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3 py-2.5 text-xs text-white font-semibold focus:outline-none">
+                                <option value="10000">10.000đ</option>
+                                <option value="20000">20.000đ</option>
+                                <option value="30000">30.000đ</option>
+                                <option value="50000" selected>50.000đ</option>
+                                <option value="100000">100.000đ</option>
+                                <option value="200000">200.000đ</option>
+                                <option value="300000">300.000đ</option>
+                                <option value="500000">500.000đ (Tối đa)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-200 mb-1">Số Seri thẻ</label>
+                        <input type="text" id="cardSerialInput" required maxlength="30"
+                            placeholder="Nhập chính xác số Seri trên thẻ..."
+                            class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3.5 py-2.5 text-xs text-white font-mono placeholder-slate-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-200 mb-1">Mã thẻ cào</label>
+                        <input type="text" id="cardPinInput" required maxlength="30"
+                            placeholder="Nhập chính xác mã số thẻ cào..."
+                            class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3.5 py-2.5 text-xs text-white font-mono placeholder-slate-500 focus:outline-none">
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-3 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] hover:opacity-95 text-slate-950 font-extrabold text-xs shadow-neon-cyan active:scale-95 transition-transform">
+                        Gửi thẻ cào (Chờ Duyệt)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- C. MODAL GIỎ HÀNG & THANH TOÁN -->
+    <div id="cartModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="w-full max-w-lg bg-gaming-card border-t sm:border border-gaming-border rounded-t-3xl sm:rounded-3xl max-h-[92vh] flex flex-col overflow-hidden shadow-neon-cyan">
+            <div class="px-4 py-3.5 border-b border-gaming-border flex items-center justify-between bg-gaming-panel shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-[#00d2ff]"></i>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-white">GIỎ HÀNG &amp; THANH TOÁN</h3>
+                </div>
+                <button type="button" onclick="closeModal('cartModal')" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-4 overflow-y-auto space-y-3.5 text-xs">
+                <div id="cartItemsContainer" class="space-y-2.5"></div>
+
+                <div id="cartAccNoticeBox" class="hidden p-3 rounded-xl bg-amber-500/10 border border-amber-500/40 text-amber-200 space-y-2 leading-relaxed">
+                    <div class="font-bold text-amber-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info"></i> Liên hệ Zalo hoặc Facebook để nhận Acc sau khi mua
+                    </div>
+                    <p>Sau khi mua, vui lòng liên hệ Zalo hoặc Facebook để nhận acc, Khi nhận acc gửi cú pháp: <strong class="text-white">Tên Trên web+Mã Đơn</strong></p>
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-0.5">
+                        <span class="font-mono text-[11px] text-[#00d2ff]">Cú pháp mẫu: <strong id="cartAccSyntaxPreview">...</strong></span>
+                        <div class="flex flex-wrap items-center gap-1.5">
+                            <a href="https://zalo.me/0783167978" target="_blank" rel="noopener noreferrer"
+                                onclick="openExternalLink(event, 'https://zalo.me/0783167978')"
+                                class="px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 text-[11px] font-bold">
+                                <i class="fa-solid fa-comment-dots mr-1"></i>Zalo 0783167978
+                            </a>
+                            <a href="https://www.facebook.com/share/14V2uU6V8qU/" target="_blank" rel="noopener noreferrer"
+                                onclick="openExternalLink(event, 'https://www.facebook.com/share/14V2uU6V8qU/')"
+                                class="px-2.5 py-1 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/40 text-blue-300 text-[11px] font-bold">
+                                <i class="fa-brands fa-facebook-f mr-1"></i>Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="checkoutFormSection" class="space-y-3 pt-1 border-t border-gaming-border">
+                    <div id="checkoutReceiverFieldGroup">
+                        <label id="checkoutCustomerLabel" class="block text-xs font-bold text-slate-200 mb-1">Tên nhân vật Roblox / Ghi chú nhận hàng <span class="text-rose-400">*</span></label>
+                        <input type="text" id="checkoutCustomerInput" maxlength="60"
+                            placeholder="Nhập tên nhân vật Roblox để nhận vật phẩm..."
+                            class="w-full bg-gaming-bg border border-gaming-border focus:border-[#00d2ff] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none">
+                    </div>
+
+                    <div class="p-3 rounded-2xl bg-gaming-bg border border-gaming-border space-y-1.5">
+                        <div class="flex items-center justify-between text-slate-400">
+                            <span>Số dư ví của bạn:</span>
+                            <strong id="cartUserBalanceText" class="text-white">0đ</strong>
+                        </div>
+                        <div class="flex items-center justify-between text-sm font-extrabold pt-1 border-t border-gaming-border/70">
+                            <span class="text-white">Tổng thanh toán:</span>
+                            <span id="cartTotalAmountText" class="font-display text-base text-[#00d2ff]">0đ</span>
+                        </div>
+                    </div>
+
+                    <button type="button" id="checkoutSubmitBtn" onclick="processCheckout()"
+                        class="w-full py-3 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] hover:opacity-95 text-slate-950 font-extrabold text-xs shadow-neon-cyan flex items-center justify-center gap-1.5 active:scale-95 transition-transform">
+                        <i class="fa-solid fa-bolt"></i> Thanh toán bằng số dư tài khoản
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- D. MODAL LỊCH SỬ DỊCH VỤ, LỊCH SỬ NẠP TIỀN & THÔNG BÁO NẠP CARD -->
+    <div id="ordersModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="w-full max-w-2xl bg-gaming-card border-t sm:border border-gaming-border rounded-t-3xl sm:rounded-3xl max-h-[90vh] flex flex-col overflow-hidden shadow-neon-cyan">
+            <div class="px-4 py-3.5 border-b border-gaming-border flex items-center justify-between bg-gaming-panel shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-clock-rotate-left text-[#00d2ff]"></i>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-white">LỊCH SỬ &amp; THÔNG BÁO CỦA TÀI KHOẢN</h3>
+                </div>
+                <button type="button" onclick="closeModal('ordersModal')" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="px-4 pt-3 shrink-0">
+                <div class="grid grid-cols-3 gap-1.5 p-1 rounded-2xl bg-gaming-panel border border-gaming-border">
+                    <button type="button" id="histTabService" onclick="switchHistoryTab('service')"
+                        class="py-2 rounded-xl text-[11px] sm:text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all">
+                        Lịch sử dịch vụ
+                    </button>
+                    <button type="button" id="histTabTopup" onclick="switchHistoryTab('topup')"
+                        class="py-2 rounded-xl text-[11px] sm:text-xs font-bold text-slate-300 hover:text-white transition-all">
+                        Lịch sử nạp tiền
+                    </button>
+                    <button type="button" id="histTabCardNotice" onclick="switchHistoryTab('cardNotice')"
+                        class="py-2 rounded-xl text-[11px] sm:text-xs font-bold text-slate-300 hover:text-white transition-all">
+                        Thông báo nạp card
+                    </button>
+                </div>
+            </div>
+
+            <div id="ordersListContainer" class="p-4 overflow-y-auto space-y-3 text-xs"></div>
+        </div>
+    </div>
+
+    <!-- E. POPUP XÁC NHẬN MUA ACC THÀNH CÔNG & NÚT LIÊN HỆ ZALO / FACEBOOK -->
+    <div id="accPurchaseSuccessModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="w-full max-w-md bg-gaming-card border-t sm:border border-[#00d2ff]/50 rounded-t-3xl sm:rounded-3xl overflow-hidden shadow-neon-cyan">
+            <div class="px-4 py-3.5 border-b border-gaming-border flex items-center justify-between bg-gaming-panel">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                    <h3 class="font-display font-bold text-sm sm:text-base text-white">MUA ACC THÀNH CÔNG • NHẬN ACC</h3>
+                </div>
+                <button type="button" onclick="closeModal('accPurchaseSuccessModal')" class="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-4 space-y-3.5 text-xs">
+                <div class="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/35 text-emerald-200 space-y-1">
+                    <div class="font-bold text-emerald-300 text-sm">Đơn hàng <span id="accSuccessOrderCode" class="font-mono text-[#00d2ff]">#HN001</span> đã được ghi nhận!</div>
+                    <p class="leading-relaxed">Sau khi mua, vui lòng liên hệ <strong>Zalo</strong> hoặc <strong>Facebook</strong> bên dưới để nhận acc. Khi nhận acc, gửi đúng cú pháp:</p>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-gaming-bg border border-[#00d2ff]/40 flex items-center justify-between gap-2">
+                    <div class="min-w-0">
+                        <div class="text-[11px] text-slate-400">Cú pháp nhận Acc (Tên Trên web+Mã Đơn):</div>
+                        <div id="accSuccessSyntaxValue" class="font-mono font-extrabold text-sm text-[#00d2ff] truncate mt-0.5">Khách+HN001</div>
+                    </div>
+                    <button type="button" onclick="copyText(document.getElementById('accSuccessSyntaxValue').textContent, 'Cú pháp nhận Acc')"
+                        class="px-3 py-2 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 font-extrabold text-xs shrink-0">
+                        <i class="fa-solid fa-copy mr-1"></i>Copy cú pháp
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <a href="https://zalo.me/0783167978" target="_blank" rel="noopener noreferrer"
+                        onclick="openExternalLink(event, 'https://zalo.me/0783167978')"
+                        class="py-3 px-3 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/50 text-emerald-200 font-extrabold text-xs flex items-center justify-center gap-2 transition-colors">
+                        <i class="fa-solid fa-comment-dots text-sm text-emerald-400"></i>
+                        <span>Liên hệ Zalo (0783167978)</span>
+                    </a>
+                    <a href="https://www.facebook.com/share/14V2uU6V8qU/" target="_blank" rel="noopener noreferrer"
+                        onclick="openExternalLink(event, 'https://www.facebook.com/share/14V2uU6V8qU/')"
+                        class="py-3 px-3 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/50 text-blue-200 font-extrabold text-xs flex items-center justify-center gap-2 transition-colors">
+                        <i class="fa-brands fa-facebook-f text-sm text-blue-400"></i>
+                        <span>Liên hệ Facebook Admin</span>
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-between pt-1">
+                    <button type="button" onclick="closeModal('accPurchaseSuccessModal'); openHistoryModal('service');"
+                        class="text-[#00d2ff] hover:underline font-bold text-xs">
+                        Xem trong Lịch sử dịch vụ →
+                    </button>
+                    <button type="button" onclick="closeModal('accPurchaseSuccessModal')"
+                        class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs">
+                        Đóng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed bottom-4 right-3 left-3 sm:left-auto sm:w-80 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <script>
+        /* ================= CHỐNG LỖI & BẢO VỆ MÔI TRƯỜNG CHẠY ================= */
+        (function protectRuntimeEnvironment() {
+            try {
+                if (Object.freeze) {
+                    Object.freeze(Object.prototype);
+                    Object.freeze(Array.prototype);
+                }
+            } catch (_) {
+                // Bỏ qua nếu đã khóa
+            }
+        })();
+
+        const SHOP_ORIGIN_URL = 'https://nguyenthichinhtg869-source.github.io/hoangnamshopvip/';
+        const SYNC_CHANNEL_NAME = 'hoangnam_store_sync_v1';
+        const ALLOWED_ORDER_STATUSES = new Set(['Đã Hoàn Thành', 'Đang xử Lí', 'Từ Chối']);
+        const ALLOWED_TOPUP_STATUSES = new Set(['Chờ Duyệt', 'Đã Duyệt', 'Từ Chối']);
+        const ALLOWED_EXTERNAL_HOSTS = new Set([
+            'facebook.com',
+            'www.facebook.com',
+            'm.facebook.com',
+            'zalo.me',
+            'img.vietqr.io',
+            'nguyenthichinhtg869-source.github.io'
+        ]);
+
+        const STORAGE_KEYS = {
+            users: 'hoangnam_store_v5_users',
+            currentUser: 'hoangnam_store_v5_current_user',
+            guestBalance: 'hoangnam_store_v5_guest_balance',
+            guestCart: 'hoangnam_store_v5_guest_cart',
+            cart: 'hoangnam_store_v5_cart',
+            orders: 'hoangnam_store_v5_orders',
+            topups: 'hoangnam_store_v5_topups',
+            orderSeq: 'hoangnam_store_v5_order_seq',
+            integrity: 'hoangnam_store_v5_integrity_sig',
+            activityLog: 'hoangnam_store_v5_activity_log'
+        };
+
+        const PRODUCTS = [
+            {
+                id: 'ps99_gem',
+                name: 'Gem Pet Simulator 99',
+                unitLabel: '350M gem♥️',
+                price: 10000,
+                category: 'item',
+                badge: 'Bán chạy',
+                icon: 'fa-gem',
+                accent: 'from-[#00d2ff] to-blue-500',
+                description: 'Giao dịch nhanh qua Mailbox / Trade trong Pet Simulator 99.'
+            },
+            {
+                id: 'ps99_huge',
+                name: 'Huge Pet PS99',
+                unitLabel: '15 con',
+                price: 10000,
+                category: 'item',
+                badge: 'Combo Hot',
+                icon: 'fa-dragon',
+                accent: 'from-indigo-400 to-[#6366f1]',
+                description: 'Combo 15 Huge Pet ngẫu nhiên cực khỏe cho đội hình farm.'
+            },
+            {
+                id: 'ps99_titanic',
+                name: 'Titanic Low rap',
+                unitLabel: '1 con',
+                price: 120000,
+                category: 'item',
+                badge: 'VIP Hiếm',
+                icon: 'fa-crown',
+                accent: 'from-amber-400 to-orange-500',
+                description: 'Titanic Low rap chính chủ, giao dịch trực tiếp an toàn 100%.'
+            },
+            {
+                id: 'ps99_acc_r20',
+                name: 'Acc Rank 20',
+                unitLabel: '1 acc',
+                price: 17000,
+                category: 'acc',
+                badge: 'Acc Trắng TT',
+                icon: 'fa-user-ninja',
+                accent: 'from-emerald-400 to-teal-500',
+                description: 'Acc Rank 20 sẵn sàng cày sự kiện. Liên hệ Zalo hoặc Facebook sau khi mua để nhận acc.'
+            },
+            { id: 'bf_perm_rocket', name: 'Rocket', price: 7250, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Rocket trong Blox Fruits.' },
+            { id: 'bf_perm_spin', name: 'Spin', price: 10875, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Spin trong Blox Fruits.' },
+            { id: 'bf_perm_blade', name: 'Blade', price: 14500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Blade trong Blox Fruits.' },
+            { id: 'bf_perm_spring', name: 'Spring', price: 26100, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Spring trong Blox Fruits.' },
+            { id: 'bf_perm_bomb', name: 'Bomb', price: 31900, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Bomb trong Blox Fruits.' },
+            { id: 'bf_perm_smoke', name: 'Smoke', price: 36250, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Smoke trong Blox Fruits.' },
+            { id: 'bf_perm_spike', name: 'Spike', price: 55100, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Spike trong Blox Fruits.' },
+            { id: 'bf_perm_flame', name: 'Flame', price: 79750, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Flame trong Blox Fruits.' },
+            { id: 'bf_perm_ice', name: 'Ice', price: 108750, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Ice trong Blox Fruits.' },
+            { id: 'bf_perm_sand', name: 'Sand', price: 123250, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Sand trong Blox Fruits.' },
+            { id: 'bf_perm_dark', name: 'Dark', price: 137750, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Dark trong Blox Fruits.' },
+            { id: 'bf_perm_eagle', name: 'Eagle', price: 141375, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Eagle trong Blox Fruits.' },
+            { id: 'bf_perm_diamond', name: 'Diamond', price: 145000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Diamond trong Blox Fruits.' },
+            { id: 'bf_perm_light', name: 'Light', price: 159500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Light trong Blox Fruits.' },
+            { id: 'bf_perm_rubber', name: 'Rubber', price: 174000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Rubber trong Blox Fruits.' },
+            { id: 'bf_perm_ghost', name: 'Ghost', price: 184875, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Ghost trong Blox Fruits.' },
+            { id: 'bf_perm_magma', name: 'Magma', price: 188500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Magma trong Blox Fruits.' },
+            { id: 'bf_perm_quake', name: 'Quake', price: 217500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Quake trong Blox Fruits.' },
+            { id: 'bf_perm_buddha', name: 'Buddha', price: 239250, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Buddha trong Blox Fruits.' },
+            { id: 'bf_perm_love', name: 'Love', price: 246500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Love trong Blox Fruits.' },
+            { id: 'bf_perm_creation', name: 'Creation', price: 253750, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Creation trong Blox Fruits.' },
+            { id: 'bf_perm_spider', name: 'Spider', price: 261000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Spider trong Blox Fruits.' },
+            { id: 'bf_perm_sound', name: 'Sound', price: 275500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Sound trong Blox Fruits.' },
+            { id: 'bf_perm_phoenix', name: 'Phoenix', price: 290000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Phoenix trong Blox Fruits.' },
+            { id: 'bf_perm_portal', name: 'Portal', price: 290000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Portal trong Blox Fruits.' },
+            { id: 'bf_perm_lightning', name: 'Lightning', price: 304500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Lightning trong Blox Fruits.' },
+            { id: 'bf_perm_pain', name: 'Pain', price: 319000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Pain trong Blox Fruits.' },
+            { id: 'bf_perm_blizzard', name: 'Blizzard', price: 326250, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Blizzard trong Blox Fruits.' },
+            { id: 'bf_perm_gravity', name: 'Gravity', price: 333500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Gravity trong Blox Fruits.' },
+            { id: 'bf_perm_mammoth', name: 'Mammoth', price: 340750, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Mammoth trong Blox Fruits.' },
+            { id: 'bf_perm_trex', name: 'T-Rex', price: 340750, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn T-Rex trong Blox Fruits.' },
+            { id: 'bf_perm_dough', name: 'Dough', price: 348000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Dough trong Blox Fruits.' },
+            { id: 'bf_perm_shadow', name: 'Shadow', price: 351625, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Shadow trong Blox Fruits.' },
+            { id: 'bf_perm_venom', name: 'Venom', price: 355250, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Venom trong Blox Fruits.' },
+            { id: 'bf_perm_gas', name: 'Gas', price: 362500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Gas trong Blox Fruits.' },
+            { id: 'bf_perm_spirit', name: 'Spirit', price: 369750, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Spirit trong Blox Fruits.' },
+            { id: 'bf_perm_tiger', name: 'Tiger', price: 435000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Tiger trong Blox Fruits.' },
+            { id: 'bf_perm_yeti', name: 'Yeti', price: 435000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Yeti trong Blox Fruits.' },
+            { id: 'bf_perm_magnet', name: 'Magnet', price: 507500, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Magnet trong Blox Fruits.' },
+            { id: 'bf_perm_kitsune', name: 'Kitsune', price: 580000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Kitsune trong Blox Fruits.' },
+            { id: 'bf_perm_control', name: 'Control', price: 580000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Control trong Blox Fruits.' },
+            { id: 'bf_perm_dragon', name: 'Dragon', price: 725000, category: 'perm_bf', badge: 'Perm BloxFruit', icon: 'fa-apple-whole', accent: 'from-amber-400 to-orange-500', description: 'Trái vĩnh viễn Dragon trong Blox Fruits.' }
+        ];
+
+        let activeCategory = 'all';
+        let activeHistoryTab = 'service';
+        let confirmedBankAmount = 0;
+        let syncChannel = null;
+        let lastSnapshotSignature = '';
+        const sessionNonce = `${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
+
+        function escapeHtml(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function safeJsonParse(raw, fallback) {
+            try {
+                const parsed = JSON.parse(raw);
+                if (!parsed || typeof parsed !== 'object') return parsed ?? fallback;
+                if (Object.prototype.hasOwnProperty.call(parsed, '__proto__') || Object.prototype.hasOwnProperty.call(parsed, 'constructor')) {
+                    return fallback;
+                }
+                return parsed;
+            } catch (_) {
+                return fallback;
+            }
+        }
+
+        function formatVND(amount) {
+            const num = Math.max(0, Math.round(Number(amount) || 0));
+            return num.toLocaleString('vi-VN') + 'đ';
+        }
+
+        function computeStateChecksum(payloadObj) {
+            const envSalt = `hoangnam_shopvip_v5::${SHOP_ORIGIN_URL}`;
+            const source = `${envSalt}::${JSON.stringify(payloadObj)}`;
+            let h1 = 0x811c9dc5;
+            let h2 = 0x01000193;
+            for (let i = 0; i < source.length; i++) {
+                const ch = source.charCodeAt(i);
+                h1 ^= ch;
+                h1 = Math.imul(h1, 0x01000193);
+                h2 ^= (ch + (i % 31));
+                h2 = Math.imul(h2, 0x85ebca6b);
+            }
+            return `${(h1 >>> 0).toString(16).padStart(8, '0')}${(h2 >>> 0).toString(16).padStart(8, '0')}`;
+        }
+
+        function refreshIntegritySignature() {
+            const sig = computeStateChecksum({
+                users: getUsers(),
+                currentUser: getCurrentUser(),
+                guestBalance: getGuestBalance(),
+                guestCart: getGuestCart(),
+                allOrders: getAllOrdersRaw(),
+                allTopups: getAllTopupsRaw(),
+                orderSeq: getOrderSeq()
+            });
+            localStorage.setItem(STORAGE_KEYS.integrity, sig);
+            return sig;
+        }
+
+        /* ================= CÔ LẬP DỮ LIỆU RIÊNG TỪNG TÀI KHOẢN ================= */
+        function getUsers() {
+            const arr = safeJsonParse(localStorage.getItem(STORAGE_KEYS.users), []);
+            return Array.isArray(arr) ? arr : [];
+        }
+
+        function saveUsers(arr) {
+            localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(arr));
+        }
+
+        function getCurrentUser() {
+            const u = localStorage.getItem(STORAGE_KEYS.currentUser);
+            return u && typeof u === 'string' && u.trim() ? u.trim() : null;
+        }
+
+        function setCurrentUser(username) {
+            if (username) {
+                localStorage.setItem(STORAGE_KEYS.currentUser, username.trim());
+            } else {
+                localStorage.removeItem(STORAGE_KEYS.currentUser);
+            }
+        }
+
+        function getCurrentUserRecord() {
+            const uname = getCurrentUser();
+            if (!uname) return null;
+            const users = getUsers();
+            return users.find(u => String(u.username || '').toLowerCase() === uname.toLowerCase()) || null;
+        }
+
+        function getGuestBalance() {
+            const val = parseInt(localStorage.getItem(STORAGE_KEYS.guestBalance) || '0', 10);
+            return Number.isNaN(val) || val < 0 ? 0 : val;
+        }
+
+        function setGuestBalance(val) {
+            localStorage.setItem(STORAGE_KEYS.guestBalance, String(Math.max(0, Math.round(Number(val) || 0))));
+        }
+
+        function getActiveBalance() {
+            const rec = getCurrentUserRecord();
+            if (rec) {
+                return Math.max(0, Math.round(Number(rec.balance) || 0));
+            }
+            return getGuestBalance();
+        }
+
+        function setActiveBalance(newBalance) {
+            const safeBal = Math.max(0, Math.round(Number(newBalance) || 0));
+            const uname = getCurrentUser();
+            if (uname) {
+                const users = getUsers();
+                const idx = users.findIndex(u => String(u.username || '').toLowerCase() === uname.toLowerCase());
+                if (idx !== -1) {
+                    users[idx].balance = safeBal;
+                    saveUsers(users);
+                    setGuestBalance(safeBal);
+                    return;
+                }
+            }
+            setGuestBalance(safeBal);
+        }
+
+        function getGuestCart() {
+            const arr = safeJsonParse(localStorage.getItem(STORAGE_KEYS.guestCart), []);
+            return Array.isArray(arr) ? arr : [];
+        }
+
+        function getActiveCart() {
+            const uname = getCurrentUser();
+            if (uname) {
+                const users = getUsers();
+                const rec = users.find(u => String(u.username || '').toLowerCase() === uname.toLowerCase());
+                if (rec && Array.isArray(rec.cart)) return rec.cart;
+                return [];
+            }
+            return getGuestCart();
+        }
+
+        function saveActiveCart(cartArr) {
+            const clean = Array.isArray(cartArr) ? cartArr : [];
+            const uname = getCurrentUser();
+            if (uname) {
+                const users = getUsers();
+                const idx = users.findIndex(u => String(u.username || '').toLowerCase() === uname.toLowerCase());
+                if (idx !== -1) {
+                    users[idx].cart = clean;
+                    saveUsers(users);
+                    localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(clean));
+                    return;
+                }
+            }
+            localStorage.setItem(STORAGE_KEYS.guestCart, JSON.stringify(clean));
+            localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(clean));
+        }
+
+        function getAllOrdersRaw() {
+            const arr = safeJsonParse(localStorage.getItem(STORAGE_KEYS.orders), []);
+            return Array.isArray(arr) ? arr : [];
+        }
+
+        function saveAllOrdersRaw(arr) {
+            localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(arr));
+        }
+
+        function getAllTopupsRaw() {
+            const arr = safeJsonParse(localStorage.getItem(STORAGE_KEYS.topups), []);
+            return Array.isArray(arr) ? arr : [];
+        }
+
+        function saveAllTopupsRaw(arr) {
+            localStorage.setItem(STORAGE_KEYS.topups, JSON.stringify(arr));
+        }
+
+        function getUserScopedOrders() {
+            const uname = getCurrentUser();
+            const all = getAllOrdersRaw();
+            if (uname) {
+                const lower = uname.toLowerCase();
+                return all.filter(o =>
+                    String(o.ownerUsername || '').trim().toLowerCase() === lower ||
+                    String(o.webUsername || '').trim().toLowerCase() === lower
+                );
+            }
+            return all.filter(o => o.isGuest === true && !o.ownerUsername);
+        }
+
+        function getUserScopedTopups() {
+            const uname = getCurrentUser();
+            const all = getAllTopupsRaw();
+            if (uname) {
+                const lower = uname.toLowerCase();
+                return all.filter(t =>
+                    String(t.ownerUsername || t.username || '').trim().toLowerCase() === lower
+                );
+            }
+            return all.filter(t => t.isGuest === true && !t.ownerUsername);
+        }
+
+        function getOrderSeq() {
+            const raw = parseInt(localStorage.getItem(STORAGE_KEYS.orderSeq) || '0', 10);
+            let seq = Number.isNaN(raw) || raw < 0 ? 0 : raw;
+            getAllOrdersRaw().forEach(ord => {
+                const m = String(ord && ord.id ? ord.id : '').trim().match(/^#?HN(\d+)$/i);
+                if (m) {
+                    const n = parseInt(m[1], 10);
+                    if (!Number.isNaN(n) && n > seq) seq = n;
+                }
+            });
+            return seq;
+        }
+
+        function generateNextOrderCode() {
+            const next = getOrderSeq() + 1;
+            localStorage.setItem(STORAGE_KEYS.orderSeq, String(next));
+            return `HN${String(next).padStart(3, '0')}`;
+        }
+
+        function generateTopupCode() {
+            const rand = Math.floor(1000 + Math.random() * 9000);
+            return `NAP${rand}`;
+        }
+
+        function recordShopActivity(type, detail) {
+            try {
+                const logs = safeJsonParse(localStorage.getItem(STORAGE_KEYS.activityLog), []);
+                const arr = Array.isArray(logs) ? logs : [];
+                arr.unshift({
+                    type,
+                    actor: getCurrentUser() || 'Khách',
+                    detail,
+                    time: new Date().toLocaleTimeString('vi-VN')
+                });
+                if (arr.length > 60) arr.length = 60;
+                localStorage.setItem(STORAGE_KEYS.activityLog, JSON.stringify(arr));
+            } catch (_) {
+                // Bỏ qua nếu đầy bộ nhớ
+            }
+        }
+
+        /* ================= ĐỒNG BỘ REAL-TIME VỚI ADMIN & HOANGNAMSHOPVIP ================= */
+        function computeSnapshotSignature() {
+            return [
+                localStorage.getItem(STORAGE_KEYS.users) || '[]',
+                localStorage.getItem(STORAGE_KEYS.currentUser) || '',
+                localStorage.getItem(STORAGE_KEYS.guestBalance) || '0',
+                localStorage.getItem(STORAGE_KEYS.orders) || '[]',
+                localStorage.getItem(STORAGE_KEYS.topups) || '[]',
+                localStorage.getItem(STORAGE_KEYS.orderSeq) || '0'
+            ].join('||');
+        }
+
+        function broadcastStoreUpdate(reason) {
+            refreshIntegritySignature();
+            lastSnapshotSignature = computeSnapshotSignature();
+
+            try {
+                if (syncChannel) {
+                    syncChannel.postMessage({
+                        type: 'STATE_UPDATED',
+                        source: 'index.html',
+                        shopUrl: SHOP_ORIGIN_URL,
+                        reason,
+                        nonce: sessionNonce,
+                        timestamp: Date.now()
+                    });
+                }
+            } catch (_) {
+                // Fallback qua localStorage
+            }
+
+            try {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({
+                        type: 'HOANGNAM_STORE_SYNC',
+                        source: 'index.html',
+                        reason,
+                        timestamp: Date.now()
+                    }, '*');
+                }
+            } catch (_) {
+                // Bỏ qua nếu bị giới hạn iframe
+            }
+        }
+
+        function setupSyncListeners() {
+            try {
+                if ('BroadcastChannel' in window) {
+                    syncChannel = new BroadcastChannel(SYNC_CHANNEL_NAME);
+                    syncChannel.onmessage = (event) => {
+                        const data = event && event.data;
+                        if (!data || data.type !== 'STATE_UPDATED') return;
+                        if (typeof data.timestamp === 'number' && Math.abs(Date.now() - data.timestamp) > 120000) return;
+
+                        lastSnapshotSignature = computeSnapshotSignature();
+                        syncUiState();
+                        if (data.source === 'admin.html') {
+                            showToast('Hệ thống đã cập nhật trạng thái từ Quản trị viên!', 'success');
+                        }
+                    };
+                }
+            } catch (_) {
+                // Bỏ qua nếu trình duyệt không hỗ trợ BroadcastChannel
+            }
+
+            window.addEventListener('storage', (event) => {
+                if (!event.key || Object.values(STORAGE_KEYS).includes(event.key)) {
+                    lastSnapshotSignature = computeSnapshotSignature();
+                    syncUiState();
+                }
+            });
+
+            setInterval(() => {
+                const sig = computeSnapshotSignature();
+                if (sig !== lastSnapshotSignature) {
+                    lastSnapshotSignature = sig;
+                    syncUiState();
+                }
+            }, 1200);
+        }
+
+        /* ================= CHẶN DẤU TIẾNG VIỆT & DẤU CÂU Ở TÀI KHOẢN/MẬT KHẨU ================= */
+        function sanitizeStrictAlphanumericInput(inputEl) {
+            if (!inputEl) return;
+            const raw = String(inputEl.value || '');
+            const cleaned = raw.replace(/[^a-zA-Z0-9]/g, '');
+            if (raw !== cleaned) {
+                inputEl.value = cleaned;
+                showToast('Tài khoản & mật khẩu chỉ dùng chữ không dấu và số, không nhập dấu tiếng Việt, dấu cách hoặc dấu câu!', 'error');
+            }
+        }
+
+        function isValidStrictAlphanumeric(str) {
+            return /^[a-zA-Z0-9]{4,32}$/.test(String(str || ''));
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email || '').trim());
+        }
+
+        function togglePasswordVisibility(inputId, btnEl) {
+            const inp = document.getElementById(inputId);
+            if (!inp) return;
+            const isPass = inp.type === 'password';
+            inp.type = isPass ? 'text' : 'password';
+            if (btnEl) {
+                btnEl.innerHTML = isPass ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>';
+            }
+        }
+
+        /* ================= ĐĂNG NHẬP / ĐĂNG KÝ / HỒ SƠ TÀI KHOẢN ================= */
+        function openAuthOrProfileModal() {
+            const rec = getCurrentUserRecord();
+            const profilePanel = document.getElementById('profilePanel');
+            const guestPanel = document.getElementById('guestAuthPanel');
+
+            if (rec) {
+                profilePanel.classList.remove('hidden');
+                guestPanel.classList.add('hidden');
+                document.getElementById('profileAvatarCircle').textContent = (rec.username.charAt(0) || 'U').toUpperCase();
+                document.getElementById('profileUsernameText').textContent = rec.username;
+                document.getElementById('profileEmailText').textContent = rec.email || 'Chưa cập nhật email';
+                document.getElementById('profileBalanceText').textContent = formatVND(rec.balance || 0);
+            } else {
+                profilePanel.classList.add('hidden');
+                guestPanel.classList.remove('hidden');
+                switchAuthSubTab('login');
+            }
+            openModal('authModal');
+        }
+
+        function switchAuthSubTab(tab) {
+            const isLogin = tab === 'login';
+            document.getElementById('loginForm').classList.toggle('hidden', !isLogin);
+            document.getElementById('registerForm').classList.toggle('hidden', isLogin);
+
+            document.getElementById('authTabLoginBtn').className = isLogin
+                ? 'py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all'
+                : 'py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all';
+
+            document.getElementById('authTabRegisterBtn').className = !isLogin
+                ? 'py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all'
+                : 'py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all';
+        }
+
+        function handleUserRegister(event) {
+            event.preventDefault();
+            const email = String(document.getElementById('regEmailInput').value || '').trim().toLowerCase();
+            const username = String(document.getElementById('regUsernameInput').value || '').trim();
+            const password = String(document.getElementById('regPasswordInput').value || '');
+
+            if (!email || !isValidEmail(email)) {
+                showToast('Vui lòng nhập địa chỉ Email hợp lệ (bắt buộc)!', 'error');
+                return;
+            }
+            if (!isValidStrictAlphanumeric(username)) {
+                showToast('Tài khoản phải từ 4-24 ký tự, chỉ gồm chữ không dấu và số, không có dấu câu!', 'error');
+                return;
+            }
+            if (!isValidStrictAlphanumeric(password)) {
+                showToast('Mật khẩu phải từ 4-32 ký tự, chỉ gồm chữ không dấu và số, không có dấu câu!', 'error');
+                return;
+            }
+
+            const users = getUsers();
+            if (users.some(u => String(u.username || '').toLowerCase() === username.toLowerCase())) {
+                showToast('Tên tài khoản này đã tồn tại! Vui lòng chọn tên khác.', 'error');
+                return;
+            }
+            if (users.some(u => String(u.email || '').toLowerCase() === email)) {
+                showToast('Email này đã được đăng ký cho tài khoản khác!', 'error');
+                return;
+            }
+
+            users.push({
+                username,
+                email,
+                password,
+                balance: 0,
+                cart: [],
+                createdAt: new Date().toISOString()
+            });
+            saveUsers(users);
+            setCurrentUser(username);
+            setGuestBalance(0);
+
+            document.getElementById('registerForm').reset();
+            closeModal('authModal');
+            syncUiState();
+            recordShopActivity('REGISTER', `Tạo tài khoản mới ${username} (${email})`);
+            broadcastStoreUpdate(`REGISTER_${username}`);
+            showToast(`Đăng ký thành công! Chào mừng ${username} (Số dư: 0đ).`, 'success');
+        }
+
+        function handleUserLogin(event) {
+            event.preventDefault();
+            const username = String(document.getElementById('loginUsernameInput').value || '').trim();
+            const password = String(document.getElementById('loginPasswordInput').value || '');
+
+            if (!isValidStrictAlphanumeric(username) || !isValidStrictAlphanumeric(password)) {
+                showToast('Tài khoản và mật khẩu chỉ dùng chữ không dấu và số, không có dấu câu!', 'error');
+                return;
+            }
+
+            const users = getUsers();
+            const matched = users.find(u =>
+                String(u.username || '').toLowerCase() === username.toLowerCase() &&
+                String(u.password || '') === password
+            );
+
+            if (!matched) {
+                showToast('Sai tài khoản hoặc mật khẩu!', 'error');
+                return;
+            }
+
+            setCurrentUser(matched.username);
+            setGuestBalance(Number(matched.balance) || 0);
+            document.getElementById('loginForm').reset();
+            closeModal('authModal');
+            syncUiState();
+            recordShopActivity('LOGIN', `Đăng nhập tài khoản ${matched.username}`);
+            broadcastStoreUpdate(`LOGIN_${matched.username}`);
+            showToast(`Đăng nhập thành công: ${matched.username}`, 'success');
+        }
+
+        function handleLogoutUser() {
+            const prevUser = getCurrentUser();
+            setCurrentUser(null);
+            setGuestBalance(0);
+            closeModal('authModal');
+            syncUiState();
+            recordShopActivity('LOGOUT', `Đăng xuất tài khoản ${prevUser || ''}`);
+            broadcastStoreUpdate(`LOGOUT_${prevUser || 'GUEST'}`);
+            showToast('Đã đăng xuất tài khoản. Dữ liệu cá nhân đã được khóa riêng.', 'success');
+        }
+
+        /* ================= DANH MỤC 3 DỊCH VỤ & GIỎ HÀNG ================= */
+        function setCategoryFilter(cat) {
+            activeCategory = ['all', 'item', 'acc', 'perm_bf'].includes(cat) ? cat : 'all';
+            ['all', 'item', 'acc', 'perm_bf'].forEach(key => {
+                const btn = document.getElementById(`tab-${key}`);
+                if (!btn) return;
+                if (key === activeCategory) {
+                    btn.className = 'cat-tab px-3.5 py-2 rounded-xl text-xs font-extrabold whitespace-nowrap bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all';
+                } else {
+                    btn.className = 'cat-tab px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap text-slate-300 hover:text-white transition-all';
+                }
+            });
+            renderProducts();
+        }
+
+        function buildProductCardHtml(prod) {
+            const isPermFruit = prod.category === 'perm_bf';
+            return `
+                <article class="group p-4 rounded-2xl bg-gaming-card hover:bg-gaming-cardHover border border-gaming-border hover:border-[#00d2ff]/50 transition-all flex flex-col justify-between space-y-3.5">
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br ${prod.accent} p-[1.5px] shadow-neon-cyan shrink-0">
+                                <div class="w-full h-full bg-gaming-bg rounded-[14px] flex items-center justify-center text-[#00d2ff] text-base">
+                                    <i class="fa-solid ${prod.icon}"></i>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-full bg-[#00d2ff]/12 border border-[#00d2ff]/30 text-[#00d2ff] text-[10px] font-bold">
+                                ${escapeHtml(prod.badge)}
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-display font-bold text-sm sm:text-base text-white group-hover:text-[#00d2ff] transition-colors">
+                                ${escapeHtml(prod.name)}
+                            </h3>
+                            ${isPermFruit ? '' : `
+                                <p class="text-[11px] text-slate-400 leading-relaxed mt-1">
+                                    ${escapeHtml(prod.description)}
+                                </p>
+                            `}
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-gaming-border/70 space-y-2.5">
+                        <div class="flex items-baseline justify-between">
+                            <span class="font-display font-extrabold text-base text-amber-400">${formatVND(prod.price)}</span>
+                            ${!isPermFruit && prod.unitLabel ? `<span class="text-[11px] font-bold text-cyan-200">/ ${escapeHtml(prod.unitLabel)}</span>` : ''}
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="addToCart('${prod.id}', false)"
+                                class="py-2 px-2.5 rounded-xl bg-gaming-bg hover:bg-slate-800 border border-gaming-border hover:border-[#00d2ff]/40 text-slate-200 font-bold text-[11px] flex items-center justify-center gap-1 active:scale-95 transition-transform">
+                                <i class="fa-solid fa-cart-plus text-[#00d2ff]"></i> Thêm giỏ
+                            </button>
+                            <button type="button" onclick="addToCart('${prod.id}', true)"
+                                class="py-2 px-2.5 rounded-xl bg-gradient-to-r from-[#00d2ff] to-[#6366f1] hover:opacity-95 text-slate-950 font-extrabold text-[11px] flex items-center justify-center gap-1 active:scale-95 transition-transform">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderServiceSection(sectionId, gridId, countId, categoryKey, query, emptyLabel) {
+            const sectionEl = document.getElementById(sectionId);
+            const gridEl = document.getElementById(gridId);
+            const countEl = document.getElementById(countId);
+            if (!sectionEl || !gridEl) return;
+
+            const isVisible = activeCategory === 'all' || activeCategory === categoryKey;
+            sectionEl.classList.toggle('hidden', !isVisible);
+            if (!isVisible) return;
+
+            const items = PRODUCTS.filter(p => {
+                if (p.category !== categoryKey) return false;
+                if (!query) return true;
+                return p.name.toLowerCase().includes(query) ||
+                    String(p.unitLabel || '').toLowerCase().includes(query) ||
+                    p.description.toLowerCase().includes(query);
+            });
+
+            if (countEl) {
+                countEl.textContent = `${items.length} sản phẩm`;
+            }
+
+            if (items.length === 0) {
+                gridEl.innerHTML = `
+                    <div class="col-span-full p-6 rounded-2xl bg-gaming-card border border-gaming-border text-center space-y-1">
+                        <p class="text-xs sm:text-sm font-bold text-white">${escapeHtml(emptyLabel)}</p>
+                        <p class="text-[11px] text-slate-400">Thử từ khóa tìm kiếm khác hoặc chuyển tab danh mục.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            gridEl.innerHTML = items.map(buildProductCardHtml).join('');
+        }
+
+        function renderProducts() {
+            const query = String(document.getElementById('productSearchInput')?.value || '').trim().toLowerCase();
+            renderServiceSection('section-ps99', 'productGridPs99', 'count-ps99', 'item', query, 'Không tìm thấy vật phẩm PS99 phù hợp');
+            renderServiceSection('section-acc', 'productGridAcc', 'count-acc', 'acc', query, 'Không tìm thấy Acc phù hợp');
+            renderServiceSection('section-perm_bf', 'productGridPermFruit', 'count-perm_bf', 'perm_bf', query, 'Không tìm thấy Perm Fruit phù hợp');
+        }
+
+        function addToCart(productId, openCheckoutImmediately = false) {
+            const prod = PRODUCTS.find(p => p.id === productId);
+            if (!prod) return;
+
+            const cart = getActiveCart();
+            const existingIdx = cart.findIndex(item => item.productId === productId);
+            if (existingIdx !== -1) {
+                cart[existingIdx].qty = (Number(cart[existingIdx].qty) || 1) + 1;
+            } else {
+                cart.push({ productId, qty: 1 });
+            }
+            saveActiveCart(cart);
+            syncUiState();
+
+            if (openCheckoutImmediately) {
+                openCartModal();
+            } else {
+                showToast(`Đã thêm "${prod.name}" vào giỏ hàng!`, 'success');
+            }
+        }
+
+        function changeCartItemQty(productId, delta) {
+            const cart = getActiveCart();
+            const idx = cart.findIndex(item => item.productId === productId);
+            if (idx === -1) return;
+
+            const nextQty = (Number(cart[idx].qty) || 1) + delta;
+            if (nextQty <= 0) {
+                cart.splice(idx, 1);
+            } else {
+                cart[idx].qty = nextQty;
+            }
+            saveActiveCart(cart);
+            syncUiState();
+            renderCartModal();
+        }
+
+        function removeCartItem(productId) {
+            const cart = getActiveCart();
+            const idx = cart.findIndex(item => item.productId === productId);
+            if (idx === -1) return;
+
+            const prod = PRODUCTS.find(p => p.id === productId);
+            cart.splice(idx, 1);
+            saveActiveCart(cart);
+            syncUiState();
+            renderCartModal();
+            showToast(`Đã bỏ "${prod ? prod.name : 'sản phẩm'}" khỏi giỏ hàng!`, 'success');
+        }
+
+        function clearAllCartItems() {
+            const cart = getActiveCart();
+            if (cart.length === 0) return;
+
+            saveActiveCart([]);
+            syncUiState();
+            renderCartModal();
+            showToast('Đã xóa tất cả đơn trong giỏ hàng!', 'success');
+        }
+
+        function openCartModal() {
+            renderCartModal();
+            openModal('cartModal');
+        }
+
+        function renderCartModal() {
+            const container = document.getElementById('cartItemsContainer');
+            const accNotice = document.getElementById('cartAccNoticeBox');
+            const checkoutSection = document.getElementById('checkoutFormSection');
+            const balanceEl = document.getElementById('cartUserBalanceText');
+            const totalEl = document.getElementById('cartTotalAmountText');
+            if (!container) return;
+
+            const cart = getActiveCart();
+            const balance = getActiveBalance();
+            if (balanceEl) balanceEl.textContent = formatVND(balance);
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="p-6 rounded-2xl bg-gaming-bg border border-gaming-border text-center space-y-1.5">
+                        <i class="fa-solid fa-cart-arrow-down text-xl text-slate-500"></i>
+                        <p class="font-bold text-white">Giỏ hàng đang trống</p>
+                        <p class="text-[11px] text-slate-400">Hãy chọn PS99, Acc Rank 20 hoặc Perm Fruit để thêm vào giỏ.</p>
+                    </div>
+                `;
+                if (accNotice) accNotice.classList.add('hidden');
+                if (checkoutSection) checkoutSection.classList.add('hidden');
+                return;
+            }
+
+            if (checkoutSection) checkoutSection.classList.remove('hidden');
+
+            let totalAmount = 0;
+            let hasAcc = false;
+            let hasItem = false;
+
+            const itemsHtml = cart.map(entry => {
+                const prod = PRODUCTS.find(p => p.id === entry.productId);
+                if (!prod) return '';
+                const qty = Math.max(1, Number(entry.qty) || 1);
+                const sub = prod.price * qty;
+                totalAmount += sub;
+                if (prod.category === 'acc') hasAcc = true;
+                if (prod.category === 'item' || prod.category === 'perm_bf') hasItem = true;
+
+                return `
+                    <div class="p-3 rounded-2xl bg-gaming-bg border border-gaming-border flex items-center justify-between gap-2">
+                        <div class="min-w-0">
+                            <div class="font-bold text-white truncate">${escapeHtml(prod.name)}</div>
+                            <div class="text-[11px] text-slate-400">${formatVND(prod.price)}${prod.unitLabel ? ` / ${escapeHtml(prod.unitLabel)}` : ''}</div>
+                        </div>
+                        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                            <div class="flex items-center bg-gaming-card border border-gaming-border rounded-xl overflow-hidden">
+                                <button type="button" onclick="changeCartItemQty('${prod.id}', -1)" class="w-7 h-7 text-slate-300 hover:bg-slate-800 font-bold">-</button>
+                                <span class="px-2 sm:px-2.5 font-display font-bold text-white">${qty}</span>
+                                <button type="button" onclick="changeCartItemQty('${prod.id}', 1)" class="w-7 h-7 text-slate-300 hover:bg-slate-800 font-bold">+</button>
+                            </div>
+                            <span class="font-display font-extrabold text-amber-400 min-w-[60px] sm:min-w-[68px] text-right">${formatVND(sub)}</span>
+                            <button type="button" onclick="removeCartItem('${prod.id}')" title="Bỏ đơn này" aria-label="Bỏ đơn ${escapeHtml(prod.name)}"
+                                class="w-8 h-8 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/40 text-rose-400 hover:text-rose-300 flex items-center justify-center shrink-0 active:scale-95 transition-transform">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <div class="flex items-center justify-between px-0.5 text-[11px] text-slate-400">
+                    <span>Danh sách đơn đã chọn (${cart.length})</span>
+                    <button type="button" onclick="clearAllCartItems()"
+                        class="inline-flex items-center gap-1 text-rose-400 hover:text-rose-300 font-bold transition-colors">
+                        <i class="fa-solid fa-trash-can text-[10px]"></i> Xóa tất cả
+                    </button>
+                </div>
+                ${itemsHtml}
+            `;
+
+            if (totalEl) totalEl.textContent = formatVND(totalAmount);
+
+            // Tự động ẩn ô điền tên nhân vật khi chỉ mua Acc (như Acc Rank 20)
+            const receiverFieldGroup = document.getElementById('checkoutReceiverFieldGroup');
+            const customerLabel = document.getElementById('checkoutCustomerLabel');
+            if (receiverFieldGroup) {
+                if (hasItem) {
+                    receiverFieldGroup.classList.remove('hidden');
+                    if (customerLabel) {
+                        customerLabel.innerHTML = hasAcc
+                            ? 'Tên nhân vật Roblox (để nhận Vật phẩm) <span class="text-rose-400">*</span>'
+                            : 'Tên nhân vật Roblox / Ghi chú nhận hàng <span class="text-rose-400">*</span>';
+                    }
+                } else {
+                    receiverFieldGroup.classList.add('hidden');
+                }
+            }
+
+            if (accNotice) {
+                if (hasAcc) {
+                    const webName = getCurrentUser() || 'TênTàiKhoản';
+                    const nextCode = `HN${String(getOrderSeq() + 1).padStart(3, '0')}`;
+                    const previewEl = document.getElementById('cartAccSyntaxPreview');
+                    if (previewEl) previewEl.textContent = `${webName}+${nextCode}`;
+                    accNotice.classList.remove('hidden');
+                } else {
+                    accNotice.classList.add('hidden');
+                }
+            }
+        }
+
+        function processCheckout() {
+            const cart = getActiveCart();
+            if (cart.length === 0) {
+                showToast('Giỏ hàng đang trống!', 'error');
+                return;
+            }
+
+            let totalAmount = 0;
+            let hasAcc = false;
+            let hasItem = false;
+            const itemDescriptions = [];
+
+            cart.forEach(entry => {
+                const prod = PRODUCTS.find(p => p.id === entry.productId);
+                if (!prod) return;
+                const qty = Math.max(1, Number(entry.qty) || 1);
+                totalAmount += prod.price * qty;
+                if (prod.category === 'acc') hasAcc = true;
+                if (prod.category === 'item' || prod.category === 'perm_bf') hasItem = true;
+                itemDescriptions.push(`${prod.name}${prod.unitLabel ? ` (${prod.unitLabel})` : ''} x${qty}`);
+            });
+
+            const rawCustomerInput = String(document.getElementById('checkoutCustomerInput')?.value || '').trim();
+            if (hasItem && !rawCustomerInput) {
+                showToast('Vui lòng nhập Tên nhân vật Roblox để nhận vật phẩm!', 'error');
+                return;
+            }
+            const customerInput = hasItem ? rawCustomerInput : 'Nhận Acc qua Zalo/FB';
+
+            const currentBalance = getActiveBalance();
+            if (currentBalance < totalAmount) {
+                showToast(`Số dư không đủ (${formatVND(currentBalance)} / ${formatVND(totalAmount)}). Vui lòng nạp thêm tiền!`, 'error');
+                closeModal('cartModal');
+                openTopupModal('bank');
+                return;
+            }
+
+            const btn = document.getElementById('checkoutSubmitBtn');
+            if (btn) btn.disabled = true;
+
+            setTimeout(() => {
+                if (btn) btn.disabled = false;
+
+                setActiveBalance(currentBalance - totalAmount);
+                const orderId = generateNextOrderCode();
+                const currentUser = getCurrentUser();
+                const webAccountLabel = currentUser || (hasItem ? rawCustomerInput : 'Khách');
+                const displayCustomer = hasItem
+                    ? (currentUser ? `${customerInput} (${currentUser})` : customerInput)
+                    : (currentUser ? `${currentUser} • Nhận Acc qua Zalo/FB` : 'Nhận Acc qua Zalo/FB');
+
+                const allOrders = getAllOrdersRaw();
+                allOrders.unshift({
+                    id: orderId,
+                    ownerUsername: currentUser || null,
+                    webUsername: currentUser || customerInput,
+                    isGuest: !currentUser,
+                    historyKind: 'service',
+                    hasAcc,
+                    items: itemDescriptions.join(', '),
+                    username: displayCustomer,
+                    total: totalAmount,
+                    method: 'Số dư tài khoản',
+                    status: 'Đang xử Lí',
+                    paidByBalance: true,
+                    refunded: false,
+                    time: new Date().toLocaleString('vi-VN')
+                });
+                saveAllOrdersRaw(allOrders);
+                saveActiveCart([]);
+                document.getElementById('checkoutCustomerInput').value = '';
+
+                closeModal('cartModal');
+                syncUiState();
+                recordShopActivity('ORDER', `Đặt đơn #${orderId} (${itemDescriptions.join(', ')}) - ${formatVND(totalAmount)}`);
+                broadcastStoreUpdate(`NEW_ORDER_${orderId}`);
+
+                if (hasAcc) {
+                    const syntaxText = `${webAccountLabel}+${orderId}`;
+                    const orderCodeEl = document.getElementById('accSuccessOrderCode');
+                    const syntaxEl = document.getElementById('accSuccessSyntaxValue');
+                    if (orderCodeEl) orderCodeEl.textContent = `#${orderId}`;
+                    if (syntaxEl) syntaxEl.textContent = syntaxText;
+                    openModal('accPurchaseSuccessModal');
+                    showToast(
+                        `Đặt mua Acc #${orderId} thành công! Liên hệ Zalo (0783167978) hoặc Facebook để nhận acc (${syntaxText}).`,
+                        'success'
+                    );
+                } else {
+                    showToast(`Đặt hàng #${orderId} thành công! Trạng thái: Đang xử Lí.`, 'success');
+                }
+            }, 450);
+        }
+
+        /* ================= NẠP TIỀN CHUYỂN KHOẢN MIN 10K & THẺ CÀO MAX 500K ================= */
+        function requireAccountForTopup() {
+            const currentUser = getCurrentUser();
+            if (!currentUser) {
+                showToast('Bắt buộc phải đăng nhập hoặc đăng ký tài khoản trước khi nạp tiền!', 'error');
+                closeModal('topupModal');
+                openAuthOrProfileModal();
+                return null;
+            }
+            return currentUser;
+        }
+
+        function syncTopupAccountBanner() {
+            const labelEl = document.getElementById('topupActiveAccountLabel');
+            const loginBtn = document.getElementById('topupLoginPromptBtn');
+            const currentUser = getCurrentUser();
+            if (labelEl) {
+                labelEl.textContent = currentUser ? currentUser : 'Chưa đăng nhập';
+                labelEl.className = currentUser ? 'text-emerald-300 font-mono font-bold' : 'text-rose-300 font-bold';
+            }
+            if (loginBtn) {
+                loginBtn.classList.toggle('hidden', Boolean(currentUser));
+            }
+        }
+
+        function openTopupModal(tab = 'bank') {
+            if (!requireAccountForTopup()) return;
+            syncTopupAccountBanner();
+            switchTopupTab(tab);
+            openModal('topupModal');
+        }
+
+        function switchTopupTab(tab) {
+            const isBank = tab === 'bank';
+            document.getElementById('topupBankPanel').classList.toggle('hidden', !isBank);
+            document.getElementById('topupCardPanel').classList.toggle('hidden', isBank);
+
+            document.getElementById('topupTabBankBtn').className = isBank
+                ? 'py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all'
+                : 'py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all';
+
+            document.getElementById('topupTabCardBtn').className = !isBank
+                ? 'py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all'
+                : 'py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all';
+        }
+
+        function resetBankQrPreviewIfEdited() {
+            const currentInput = parseInt(String(document.getElementById('bankAmountInput')?.value || '').replace(/[^0-9]/g, ''), 10) || 0;
+            if (currentInput !== confirmedBankAmount) {
+                confirmedBankAmount = 0;
+                document.getElementById('bankQrDetailsBox')?.classList.add('hidden');
+                document.getElementById('bankQrPlaceholder')?.classList.remove('hidden');
+            }
+        }
+
+        function selectQuickBankAmount(amount) {
+            if (!requireAccountForTopup()) return;
+            const input = document.getElementById('bankAmountInput');
+            if (input) input.value = String(amount);
+            generateBankTransferQr();
+        }
+
+        function generateBankTransferQr() {
+            if (!requireAccountForTopup()) return;
+            const rawVal = String(document.getElementById('bankAmountInput')?.value || '').replace(/[^0-9]/g, '');
+            const amount = parseInt(rawVal, 10);
+
+            if (Number.isNaN(amount) || amount < 10000) {
+                confirmedBankAmount = 0;
+                document.getElementById('bankQrDetailsBox').classList.add('hidden');
+                document.getElementById('bankQrPlaceholder').classList.remove('hidden');
+                showToast('Số tiền chuyển khoản tối thiểu là 10.000đ!', 'error');
+                return;
+            }
+
+            confirmedBankAmount = amount;
+            const note = `HoangNamStore+${amount}`;
+            const qrUrl = `https://img.vietqr.io/image/VCCB-99ZP26207M55097337-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(note)}&accountName=${encodeURIComponent('ZALOPAY_NGUYEN LU HOANG NAM')}`;
+
+            document.getElementById('bankQrImage').src = qrUrl;
+            document.getElementById('bankTransferNoteText').textContent = note;
+            document.getElementById('bankQrPlaceholder').classList.add('hidden');
+            document.getElementById('bankQrDetailsBox').classList.remove('hidden');
+            showToast(`Đã tạo mã QR nạp ${formatVND(amount)}!`, 'success');
+        }
+
+        function submitBankTransferRequest() {
+            const currentUser = requireAccountForTopup();
+            if (!currentUser) return;
+
+            if (confirmedBankAmount < 10000) {
+                showToast('Vui lòng nhập số tiền tối thiểu 10.000đ và bấm Tạo mã QR trước!', 'error');
+                return;
+            }
+
+            const topupId = generateTopupCode();
+            const note = `HoangNamStore+${confirmedBankAmount}`;
+
+            const topups = getAllTopupsRaw();
+            topups.unshift({
+                id: topupId,
+                ownerUsername: currentUser,
+                isGuest: false,
+                username: currentUser,
+                amount: confirmedBankAmount,
+                method: 'Chuyển khoản VCCB',
+                note: `Nội dung: ${note} (${formatVND(confirmedBankAmount)})`,
+                status: 'Chờ Duyệt',
+                time: new Date().toLocaleString('vi-VN')
+            });
+            saveAllTopupsRaw(topups);
+
+            const submittedAmount = confirmedBankAmount;
+            confirmedBankAmount = 0;
+            document.getElementById('bankAmountInput').value = '';
+            document.getElementById('bankQrDetailsBox').classList.add('hidden');
+            document.getElementById('bankQrPlaceholder').classList.remove('hidden');
+
+            closeModal('topupModal');
+            syncUiState();
+            recordShopActivity('TOPUP_BANK', `Tài khoản ${currentUser} gửi chuyển khoản ${formatVND(submittedAmount)} (${note})`);
+            broadcastStoreUpdate(`TOPUP_BANK_${topupId}`);
+            showToast(`Đã gửi yêu cầu nạp ${formatVND(submittedAmount)} (#${topupId}) • Chờ Admin duyệt!`, 'success');
+        }
+
+        function handleCardTopup(event) {
+            event.preventDefault();
+            const currentUser = requireAccountForTopup();
+            if (!currentUser) return;
+
+            const cardType = String(document.getElementById('cardTypeSelect')?.value || '').trim();
+            const amount = parseInt(String(document.getElementById('cardAmountSelect')?.value || '0'), 10);
+            const serial = String(document.getElementById('cardSerialInput')?.value || '').trim();
+            const pin = String(document.getElementById('cardPinInput')?.value || '').trim();
+
+            if (!cardType || Number.isNaN(amount) || amount < 10000 || amount > 500000) {
+                showToast('Mệnh giá thẻ cào hợp lệ từ 10.000đ đến tối đa 500.000đ!', 'error');
+                return;
+            }
+            if (serial.length < 5 || pin.length < 5) {
+                showToast('Vui lòng nhập đầy đủ số Seri và Mã thẻ cào!', 'error');
+                return;
+            }
+
+            const topupId = generateTopupCode();
+            const topups = getAllTopupsRaw();
+
+            topups.unshift({
+                id: topupId,
+                ownerUsername: currentUser,
+                isGuest: false,
+                username: currentUser,
+                amount,
+                method: `Thẻ cào ${cardType}`,
+                serial,
+                pin,
+                note: `Thẻ ${cardType} (${formatVND(amount)}) - Chờ Duyệt`,
+                status: 'Chờ Duyệt',
+                time: new Date().toLocaleString('vi-VN')
+            });
+            saveAllTopupsRaw(topups);
+
+            document.getElementById('topupCardPanel').reset();
+            closeModal('topupModal');
+            syncUiState();
+            recordShopActivity('TOPUP_CARD', `Tài khoản ${currentUser} gửi thẻ ${cardType} ${formatVND(amount)} (#${topupId})`);
+            broadcastStoreUpdate(`TOPUP_CARD_${topupId}`);
+            showToast(`Đã gửi thẻ ${cardType} ${formatVND(amount)} (#${topupId}) • Trạng thái: Chờ Duyệt!`, 'success');
+        }
+
+        /* ================= LỊCH SỬ DỊCH VỤ, NẠP TIỀN & THÔNG BÁO NẠP CARD ================= */
+        function openHistoryModal(tab = 'service') {
+            switchHistoryTab(tab);
+            openModal('ordersModal');
+        }
+
+        function switchHistoryTab(tab) {
+            activeHistoryTab = ['service', 'topup', 'cardNotice'].includes(tab) ? tab : 'service';
+            const map = {
+                service: 'histTabService',
+                topup: 'histTabTopup',
+                cardNotice: 'histTabCardNotice'
+            };
+            Object.entries(map).forEach(([key, elId]) => {
+                const btn = document.getElementById(elId);
+                if (!btn) return;
+                if (key === activeHistoryTab) {
+                    btn.className = 'py-2 rounded-xl text-[11px] sm:text-xs font-extrabold bg-gradient-to-r from-[#00d2ff] to-[#6366f1] text-slate-950 transition-all';
+                } else {
+                    btn.className = 'py-2 rounded-xl text-[11px] sm:text-xs font-bold text-slate-300 hover:text-white transition-all';
+                }
+            });
+            renderHistoryList();
+        }
+
+        function renderHistoryList() {
+            const container = document.getElementById('ordersListContainer');
+            if (!container) return;
+
+            const currentUser = getCurrentUser();
+
+            if (activeHistoryTab === 'service') {
+                const orders = getUserScopedOrders().filter(o => o.historyKind !== 'topup');
+                if (orders.length === 0) {
+                    container.innerHTML = `
+                        <div class="p-8 rounded-2xl bg-gaming-bg border border-gaming-border text-center space-y-1.5">
+                            <p class="font-bold text-white">Chưa có đơn dịch vụ nào</p>
+                            <p class="text-[11px] text-slate-400">Các đơn mua PS99, Acc Rank 20 và Perm Fruit của tài khoản này sẽ hiển thị tại đây.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = orders.map(ord => {
+                    const st = ALLOWED_ORDER_STATUSES.has(ord.status) ? ord.status : 'Đang xử Lí';
+                    const webName = currentUser || ord.webUsername || 'Khách';
+                    const plainSyntax = `${webName}+${ord.id}`;
+                    const statusBadge = st === 'Đã Hoàn Thành'
+                        ? `<span class="px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold">Đã Hoàn Thành</span>`
+                        : st === 'Từ Chối'
+                            ? `<span class="px-2 py-0.5 rounded-md bg-rose-500/15 border border-rose-500/40 text-rose-300 text-[10px] font-bold">Từ Chối</span>`
+                            : `<span class="px-2 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[10px] font-bold">Đang xử Lí</span>`;
+
+                    return `
+                        <article class="p-3.5 rounded-2xl bg-gaming-bg border border-gaming-border space-y-2.5">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-mono font-extrabold text-sm text-[#00d2ff]">#${escapeHtml(ord.id)}</span>
+                                    ${statusBadge}
+                                </div>
+                                <span class="font-display font-extrabold text-amber-400">${formatVND(ord.total)}</span>
+                            </div>
+
+                            <div class="text-white font-semibold">${escapeHtml(ord.items || '')}</div>
+                            <div class="text-[11px] text-slate-400">Người nhận: <strong class="text-slate-200">${escapeHtml(ord.username || '')}</strong></div>
+
+                            ${ord.hasAcc ? `
+                                <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/35 text-[11px] text-amber-200 space-y-2">
+                                    <div class="font-bold text-amber-300">Liên hệ Zalo hoặc Facebook để nhận Acc:</div>
+                                    <p>Sau khi mua, vui lòng liên hệ Zalo hoặc Facebook để nhận acc, Khi nhận acc: <strong class="text-white">Tên Trên web+Mã Đơn</strong></p>
+                                    <div class="flex flex-wrap items-center justify-between gap-2 pt-0.5">
+                                        <div class="flex items-center gap-1.5">
+                                            <span class="font-mono text-[#00d2ff]">Cú pháp: <strong>${escapeHtml(plainSyntax)}</strong></span>
+                                            <button type="button" onclick="copyText('${escapeHtml(plainSyntax)}', 'Cú pháp nhận Acc')"
+                                                class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] text-slate-200 font-bold">
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <div class="flex flex-wrap items-center gap-1.5">
+                                            <a href="https://zalo.me/0783167978" target="_blank" rel="noopener noreferrer"
+                                                onclick="openExternalLink(event, 'https://zalo.me/0783167978')"
+                                                class="px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 font-bold">
+                                                <i class="fa-solid fa-comment-dots mr-1"></i>Zalo 0783167978
+                                            </a>
+                                            <a href="https://www.facebook.com/share/14V2uU6V8qU/" target="_blank" rel="noopener noreferrer"
+                                                onclick="openExternalLink(event, 'https://www.facebook.com/share/14V2uU6V8qU/')"
+                                                class="px-2.5 py-1 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/40 text-blue-300 font-bold">
+                                                <i class="fa-brands fa-facebook-f mr-1"></i>Facebook
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            <div class="flex items-center justify-between text-[11px] text-slate-400 pt-1 border-t border-gaming-border/60">
+                                <span>${escapeHtml(ord.method || 'Số dư tài khoản')}</span>
+                                <span>${escapeHtml(ord.time || '')}</span>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+                return;
+            }
+
+            const topups = getUserScopedTopups();
+            const list = activeHistoryTab === 'cardNotice'
+                ? topups.filter(t => String(t.method || '').toLowerCase().includes('thẻ cào'))
+                : topups;
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 rounded-2xl bg-gaming-bg border border-gaming-border text-center space-y-1.5">
+                        <p class="font-bold text-white">${activeHistoryTab === 'cardNotice' ? 'Chưa có thông báo nạp card nào' : 'Chưa có lịch sử nạp tiền nào'}</p>
+                        <p class="text-[11px] text-slate-400">Lịch sử nạp chuyển khoản &amp; thẻ cào của tài khoản này sẽ hiển thị tại đây.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = list.map(tp => {
+                const st = ALLOWED_TOPUP_STATUSES.has(tp.status) ? tp.status : 'Chờ Duyệt';
+                const badge = st === 'Đã Duyệt'
+                    ? `<span class="px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold">Đã Duyệt</span>`
+                    : st === 'Từ Chối'
+                        ? `<span class="px-2 py-0.5 rounded-md bg-rose-500/15 border border-rose-500/40 text-rose-300 text-[10px] font-bold">Từ Chối</span>`
+                        : `<span class="px-2 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[10px] font-bold">Chờ Duyệt</span>`;
+
+                return `
+                    <article class="p-3.5 rounded-2xl bg-gaming-bg border border-gaming-border space-y-2">
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono font-extrabold text-sm text-[#00d2ff]">#${escapeHtml(tp.id)}</span>
+                                ${badge}
+                            </div>
+                            <span class="font-display font-extrabold text-emerald-400">+${formatVND(tp.amount)}</span>
+                        </div>
+                        <div class="font-semibold text-white">${escapeHtml(tp.method || 'Nạp tiền')}</div>
+                        ${tp.note ? `<div class="text-[11px] text-slate-300">${escapeHtml(tp.note)}</div>` : ''}
+                        <div class="text-[11px] text-slate-400 pt-1 border-t border-gaming-border/60">${escapeHtml(tp.time || '')}</div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        /* ================= CẬP NHẬT GIAO DIỆN & TIỆN ÍCH ================= */
+        function syncUiState() {
+            const balanceEl = document.getElementById('headerBalance');
+            if (balanceEl) balanceEl.textContent = formatVND(getActiveBalance());
+
+            const cart = getActiveCart();
+            const totalQty = cart.reduce((sum, item) => sum + (Number(item.qty) || 0), 0);
+            const badgeEl = document.getElementById('cartBadge');
+            if (badgeEl) {
+                if (totalQty > 0) {
+                    badgeEl.textContent = totalQty > 99 ? '99+' : String(totalQty);
+                    badgeEl.classList.remove('hidden');
+                } else {
+                    badgeEl.classList.add('hidden');
+                }
+            }
+
+            const currentUser = getCurrentUser();
+            const accLabel = document.getElementById('headerAccountLabel');
+            const accAvatar = document.getElementById('headerAccountAvatar');
+            if (accLabel && accAvatar) {
+                if (currentUser) {
+                    accLabel.textContent = currentUser;
+                    accAvatar.textContent = (currentUser.charAt(0) || 'U').toUpperCase();
+                } else {
+                    accLabel.textContent = 'Tài khoản';
+                    accAvatar.innerHTML = '<i class="fa-solid fa-user text-[9px]"></i>';
+                }
+            }
+
+            syncTopupAccountBanner();
+
+            if (!document.getElementById('ordersModal')?.classList.contains('hidden')) {
+                renderHistoryList();
+            }
+            if (!document.getElementById('cartModal')?.classList.contains('hidden')) {
+                renderCartModal();
+            }
+        }
+
+        function openModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('hidden');
+        }
+
+        function openExternalLink(event, url) {
+            try {
+                const parsed = new URL(url);
+                if (parsed.protocol !== 'https:' || !ALLOWED_EXTERNAL_HOSTS.has(parsed.hostname.toLowerCase())) {
+                    if (event) event.preventDefault();
+                    showToast('Liên kết không hợp lệ!', 'error');
+                    return false;
+                }
+            } catch (_) {
+                if (event) event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+
+        function copyText(text, label = 'Nội dung') {
+            const str = String(text || '');
+            if (!str) return;
+            try {
+                const ta = document.createElement('textarea');
+                ta.value = str;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast(`Đã sao chép ${label}: ${str}`, 'success');
+            } catch (_) {
+                showToast(`Không thể sao chép tự động: ${str}`, 'error');
+            }
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            const isError = type === 'error';
+
+            toast.className = `pointer-events-auto p-3 rounded-xl border shadow-xl flex items-center gap-2.5 text-xs font-semibold transition-all duration-300 transform translate-y-2 opacity-0 ${
+                isError
+                    ? 'bg-rose-950/95 border-rose-500/60 text-rose-100'
+                    : 'bg-gaming-card/95 border-[#00d2ff]/50 text-white'
+            }`;
+
+            toast.innerHTML = `
+                <i class="fa-solid ${isError ? 'fa-circle-exclamation text-rose-400' : 'fa-circle-check text-[#00d2ff]'} text-base shrink-0"></i>
+                <span class="flex-1 leading-snug">${escapeHtml(message)}</span>
+            `;
+
+            container.appendChild(toast);
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            });
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3400);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            syncUiState();
+            lastSnapshotSignature = computeSnapshotSignature();
+            refreshIntegritySignature();
+            setupSyncListeners();
+
+            ['authModal', 'topupModal', 'cartModal', 'ordersModal', 'accPurchaseSuccessModal'].forEach(id => {
+                const modalEl = document.getElementById(id);
+                if (modalEl) {
+                    modalEl.addEventListener('click', (e) => {
+                        if (e.target === modalEl) closeModal(id);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
